@@ -3,6 +3,6 @@ This batch file backs up FireFox profiles to date-labeled Zip files (profilename
 To use:
 
 1. Set the profile folder, backup folder, and number of backups to retain in the CONFIGURATION section of the file.
-2. Schedule a task to make backups on a regular basis.
+2. If desired, schedule a task to make backups on a regular basis.
 
 The file uses Powershell to create the archives. I created this for my own personal use and thought it might be useful to others.
