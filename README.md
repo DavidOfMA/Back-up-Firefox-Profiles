@@ -1,4 +1,4 @@
-This batch file backs up FireFox profiles to date-labeled Zip files. It tests to see whether Firefox is running and prompts the user to close it before performing a backup.
+This batch file backs up FireFox profiles to date-labeled Zip files (profilename-YYYY-MM-DD.zip). It tests to see whether Firefox is running and prompts the user to close it before performing a backup.
 
 To use:
 
