@@ -45,6 +45,7 @@ REM Keeps only the 2 most recent backups per profile
 REM === CONFIGURATION ===
 set PROFILEFOLDER=C:\Users\photo\AppData\Roaming\Mozilla\Firefox\Profiles
 set BACKUPDIR=D:\Data\Backups\Firefox
+set KEEPNUM=2
 
 REM Create backup directory if it doesn't exist
 if not exist "%BACKUPDIR%" mkdir "%BACKUPDIR%"
@@ -62,10 +63,11 @@ for /D %%D in ("%PROFILEFOLDER%\*") do (
     REM IMPORTANT: Use !ZIPFILE! here instead of %ZIPFILE% to get the updated path for each profile
     powershell -Command "Compress-Archive -Path '%%D\*' -DestinationPath '!ZIPFILE!' -Force"
 
-    REM Delete older backups, keep only 2 most recent per profile
+    REM Delete older backups, keep only KEEPNUM most recent per profile
     REM  %%~nD is a loop variable, not an environment variable
-    for /f "skip=2 delims=" %%F in ('dir /b /o-d "%BACKUPDIR%\%%~nD-*.zip"') do del "%BACKUPDIR%\%%F"
+    for /f "skip=%KEEPNUM% delims=" %%F in ('dir /b /o-d "%BACKUPDIR%\%%~nD-*.zip"') do del "%BACKUPDIR%\%%F"
 )
 
 echo All profile backups completed.
 pause
+
